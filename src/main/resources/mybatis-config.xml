@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--mybatis的主配置文件-->
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <!-- 配置事务类型  -->
+            <transactionManager type="JDBC"/>
+            <!--   配置连接信息         -->
+            <dataSource type="POOLED">
+                <!--       配置加载MySQL的驱动         -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <!--      MySQL连接的数据库地址，笔者这里是在本地localhost上测试，并且数据库的名称为mybatisdemo     -->
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatisdemo?serverTimezone=UTC"/>
+                <!--      MySQL连接的用户名         -->
+                <property name="username" value="root"/>
+                <!--      MySQL的连接密码        -->
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--   指定配置文件的的位置，映射文件指的是每个dao的位置-->
+    <mappers>
+        <!--  指定Userdao的位置,使用XML配置时使用resource标签-->
+        <!--使用注解配置的时候使用class标签,使用UserDao的全限定类名   -->
+        <mapper resource="dao/UserDao.xml"></mapper>
+    </mappers>
+</configuration>
